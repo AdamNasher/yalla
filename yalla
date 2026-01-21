@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Yalla - Interactive Security Dashboard
+# Wrapper script to run Yalla from anywhere
+
+# Get the directory where this script is located (handles symlinks)
+if [ -L "${BASH_SOURCE[0]}" ]; then
+    # If it's a symlink, resolve it
+    SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
+else
+    SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+fi
+
+# Change to the script directory and run the Python script
+cd "$SCRIPT_DIR" || exit 1
+exec python3 index.py "$@"

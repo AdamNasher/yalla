@@ -1,0 +1,105 @@
+name: Build Yalla Cross-Platform
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyinstaller psutil colorama
+    - name: Build Linux executable
+      run: python build.py linux
+    - name: Upload Linux build
+      uses: actions/upload-artifact@v3
+      with:
+        name: yalla-linux
+        path: yalla-linux-*.tar.gz
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyinstaller psutil colorama
+    - name: Build Windows executable
+      run: python build.py windows
+    - name: Upload Windows build
+      uses: actions/upload-artifact@v3
+      with:
+        name: yalla-windows
+        path: yalla-windows-*.zip
+
+  build-macos:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyinstaller psutil colorama
+    - name: Build macOS executable
+      run: python build.py darwin
+    - name: Upload macOS build
+      uses: actions/upload-artifact@v3
+      with:
+        name: yalla-macos
+        path: yalla-darwin-*.tar.gz
+
+  create-usb-package:
+    needs: [build-linux, build-windows, build-macos]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Download all builds
+      uses: actions/download-artifact@v3
+    - name: Create USB package
+      run: python create_usb_package.py
+    - name: Upload USB package
+      uses: actions/upload-artifact@v3
+      with:
+        name: yalla-usb-package
+        path: yalla-usb-package.zip
+
+  release:
+    needs: [build-linux, build-windows, build-macos, create-usb-package]
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    steps:
+    - name: Download all build artifacts
+      uses: actions/download-artifact@v3
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        draft: false
+        prerelease: false
+        generate_release_notes: true
+        files: |
+          yalla-linux/yalla-linux-*.tar.gz
+          yalla-windows/yalla-windows-*.zip
+          yalla-macos/yalla-darwin-*.tar.gz
+          yalla-usb-package/yalla-usb-package.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
