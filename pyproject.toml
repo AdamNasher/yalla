@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61", "wheel", "build"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yalla"
+version = "1.0.0"
+description = "Interactive Security Dashboard - Red Team Edition"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [ { name = "Your Name" } ]
+requires-python = ">=3.7"
+dependencies = [
+    "psutil",
+    "colorama",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Information Technology",
+    "Topic :: Security",
+    "Topic :: System :: Monitoring",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/yalla"
+
+[project.scripts]
+yalla = "yalla.index:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["yalla*"]

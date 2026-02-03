@@ -5,17 +5,44 @@ Main entry point for the security monitoring dashboard
 """
 
 import sys
+import os
 import time
 import argparse
-from config import REFRESH_INTERVAL
-from modules.system_monitor import get_system_stats
-from modules.network_monitor import get_network_stats
-from modules.ui_renderer import render_dashboard, clear_screen
-from modules.info_display import (
-    display_cpu_info, display_memory_info, display_disk_info,
-    display_private_ip, display_public_ip, display_network_info,
-    display_system_stats, display_uptime
-)
+
+# Ensure repository root is on sys.path so local modules can be imported
+_project_root = os.path.abspath(os.path.dirname(__file__))
+if _project_root not in sys.path:
+    sys.path.insert(0, _project_root)
+
+# Prefer package-qualified imports when installed, fall back to top-level imports for running from source
+try:
+    from yalla.config import REFRESH_INTERVAL
+except Exception:
+    from config import REFRESH_INTERVAL
+
+try:
+    from yalla._version import __version__
+except Exception:
+    from _version import __version__
+
+try:
+    from yalla.modules.system_monitor import get_system_stats
+    from yalla.modules.network_monitor import get_network_stats
+    from yalla.modules.ui_renderer import render_dashboard, clear_screen
+    from yalla.modules.info_display import (
+        display_cpu_info, display_memory_info, display_disk_info,
+        display_private_ip, display_public_ip, display_network_info,
+        display_system_stats, display_uptime
+    )
+except Exception:
+    from modules.system_monitor import get_system_stats
+    from modules.network_monitor import get_network_stats
+    from modules.ui_renderer import render_dashboard, clear_screen
+    from modules.info_display import (
+        display_cpu_info, display_memory_info, display_disk_info,
+        display_private_ip, display_public_ip, display_network_info,
+        display_system_stats, display_uptime
+    )
 
 # Platform-specific imports
 try:
@@ -155,6 +182,9 @@ Examples:
                         help='Display system statistics summary')
     parser.add_argument('-u', '--uptime', action='store_true',
                         help='Display system uptime')
+
+    parser.add_argument('--version', action='version',
+                        version=f'%(prog)s {__version__}')
     
     return parser.parse_args()
 

@@ -3,7 +3,17 @@ Setup configuration for Yalla
 """
 
 from setuptools import setup, find_packages
-from _version import __version__
+
+# Read version without importing the package (avoids import-time side effects during builds)
+def read_version():
+    import os
+    version_ns = {}
+    version_path = os.path.join(os.path.dirname(__file__), "yalla", "_version.py")
+    with open(version_path, "r", encoding="utf-8") as f:
+        exec(f.read(), version_ns)
+    return version_ns.get("__version__", "0.0.0")
+
+__version__ = read_version()
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
@@ -19,7 +29,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/yourusername/yalla",
-    packages=find_packages(),
+    packages=find_packages(include=["yalla", "yalla.*"]),
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Information Technology",
@@ -37,7 +47,7 @@ setup(
     install_requires=requirements,
     entry_points={
         "console_scripts": [
-            "yalla=index:main",
+            "yalla=yalla.index:main",
         ],
     },
     include_package_data=True,
