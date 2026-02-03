@@ -28,7 +28,7 @@ setup(
     description="Interactive Security Dashboard - Red Team Edition",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/yalla",
+    url="https://github.com/AdamNasher/yalla",
     packages=find_packages(include=["yalla", "yalla.*"]),
     classifiers=[
         "Development Status :: 4 - Beta",

@@ -24,7 +24,7 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/yalla"
+Homepage = "https://github.com/AdamNasher/yalla"
 
 [project.scripts]
 yalla = "yalla.index:main"
