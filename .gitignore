@@ -163,3 +163,5 @@ yalla.log
 # USB packages
 Yalla-USB/
 yalla-usb-package.zip
+# Backup folder for refactor
+legacy_backup/
