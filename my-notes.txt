@@ -1,0 +1,3 @@
+After making a solid base of a app, lets start making branches on git 
+and making changes and then merge muliple diffrent branches to learn
+
