@@ -5,11 +5,24 @@ A terminal-based security dashboard with real-time system monitoring, network an
 ![Python](https://img.shields.io/badge/python-3.7+-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Platforms](https://img.shields.io/badge/platforms-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)
-![USB Ready](https://img.shields.io/badge/USB-Ready-orange.svg)
 [![Release](https://img.shields.io/github/v/release/AdamNasher/yalla)](https://github.com/AdamNasher/yalla/releases)
-[![Build](https://img.shields.io/github/actions/workflow/status/AdamNasher/yalla/build.yml)](https://github.com/AdamNasher/yalla/actions)
+[![Build Status](https://img.shields.io/badge/status-active-brightgreen.svg)](https://github.com/AdamNasher/yalla)
 
-## Features
+## 🚀 Quick Start
+
+```bash
+# Clone and setup
+git clone https://github.com/AdamNasher/yalla.git
+cd yalla
+pip install -r requirements.txt
+
+# Run the dashboard
+python -m yalla
+```
+
+That's it! You'll see a beautiful real-time security dashboard in your terminal.
+
+## 📊 Features
 
 - **Real-time System Monitoring**
   - CPU usage with visual progress bars
@@ -28,121 +41,43 @@ A terminal-based security dashboard with real-time system monitoring, network an
   - ASCII art banner with red team theme
   - Color-coded metrics (green/yellow/red thresholds)
   - Terminal-based UI with borders and sections
-  - Real-time auto-refresh
+  - Real-time auto-refresh (1.5 seconds)
 
 - **Cross-Platform & Portable**
-  - Native support for Windows, macOS, and Linux
-  - USB-ready executables (no installation required)
-  - Single-file executables with embedded Python runtime
-  - Non-blocking keyboard input with platform-specific handling
-  - Clean exit handling and modular architecture
+  - Windows, macOS, and Linux support
+  - Single package installation
+  - Command-line interface with multiple display options
+  - Non-blocking keyboard input
+  - Clean, modular architecture
 
-## Installation
+## 📦 Installation
 
-### Prerequisites
+### Option 1: Quick Install (Recommended)
 
-- Python 3.7 or higher
-- pip (Python package manager)
-
-### Setup
-
-1. Clone the repository:
 ```bash
 git clone https://github.com/AdamNasher/yalla.git
 cd yalla
-```
-
-2. Install dependencies:
-```bash
 pip install -r requirements.txt
+python -m yalla
 ```
 
-3. Make `yalla` command available system-wide (choose one method):
-
-   **Option A: Create symlink in ~/.local/bin (Recommended - No sudo needed)**
-   ```bash
-   mkdir -p ~/.local/bin
-   ln -s /path/to/Yalla/yalla ~/.local/bin/yalla
-   ```
-   Note: `~/.local/bin` is usually already in your PATH. If not, add it to your shell config.
-
-   **Option B: Create symlink in /usr/local/bin (Requires sudo)**
-   ```bash
-   sudo ln -s /path/to/Yalla/yalla /usr/local/bin/yalla
-   ```
-
-   **Option C: Add alias (Quick setup)**
-   ```bash
-   # Add to your shell config (~/.zshrc, ~/.bashrc, etc.)
-   alias yalla='cd /path/to/Yalla && python3 index.py'
-   
-   # Then reload your shell
-   source ~/.zshrc  # or source ~/.bashrc
-   ```
-
-### Portable USB Distribution
-
-For maximum portability, use the pre-built executables that run directly from USB drives:
-
-1. **Download the USB package** from [Releases](https://github.com/AdamNasher/yalla/releases)
-
-2. **Extract to USB drive** - the entire `Yalla-USB` folder can be copied to any USB drive
-
-3. **Run directly from USB**:
-   ```bash
-   # Windows
-   Yalla-USB/scripts/run_yalla_windows.bat
-
-   # Linux/macOS
-   Yalla-USB/scripts/run_yalla_unix.sh
-
-   # Universal (requires Python)
-   Yalla-USB/scripts/run_yalla_python.py
-   ```
-
-### Platform-Specific Executables
-
-Download pre-built executables for your platform from [Releases](https://github.com/AdamNasher/yalla/releases):
-
-- **Windows**: `yalla-windows-x86_64.zip` - Extract and run `yalla.exe`
-- **macOS**: `yalla-darwin-x86_64.tar.gz` - Extract and run `yalla`
-- **Linux**: `yalla-linux-x86_64.tar.gz` - Extract and run `yalla`
-
-No installation required - these are fully self-contained executables.
-
-### Building from Source
-
-To build executables for your platform:
+### Option 2: Install as Package
 
 ```bash
-# Install build dependencies
-pip install pyinstaller psutil colorama
-
-# Build for current platform
-python build.py
-
-# Build for specific platform (limited cross-compilation support)
-python build.py windows    # Windows executable
-python build.py linux      # Linux executable
-python build.py darwin     # macOS executable
-
-# Create USB distribution package
-python create_usb_package.py
+git clone https://github.com/AdamNasher/yalla.git
+cd yalla
+pip install -e .
+yalla  # Now available as a command
 ```
 
-## Usage
+### Option 3: Pre-built Executables
 
-### Interactive Dashboard Mode
+Download from [Releases](https://github.com/AdamNasher/yalla/releases):
+- **Windows**: `yalla-windows-x86_64.zip`
+- **macOS**: `yalla-darwin-x86_64.tar.gz`
+- **Linux**: `yalla-linux-x86_64.tar.gz`
 
-Run the full interactive dashboard:
-```bash
-yalla
-```
-
-Or run directly:
-```bash
-python index.py
-```
+Extract and run directly - no Python installation needed!
 
 **Controls (Interactive Mode)**:
 - **q** - Quit the dashboard
@@ -203,20 +138,63 @@ yalla -c -m -d        # CPU, memory, and disk
 - `-u, --uptime` - Display system uptime
 - `-h, --help` - Show help message
 
-## Configuration
+### Command-Line Options
 
-Edit `config.py` to customize:
+Get specific information without the interactive dashboard:
 
-- Refresh interval
-- Color themes
-- Display preferences
-- Threshold values for warnings/critical alerts
+```bash
+# Display CPU information
+python -m yalla -c
 
-## Platform Compatibility
+# Display memory information
+python -m yalla -m
 
-Yalla is fully cross-platform and tested on:
+# Display disk information
+python -m yalla -d
 
-### ✅ Supported Platforms
+# Display private IP address
+python -m yalla -i
+
+# Display public IP address
+python -m yalla -p
+
+# Display network interfaces and connections
+python -m yalla -n
+
+# Display system statistics summary
+python -m yalla -s
+
+# Display system uptime
+python -m yalla -u
+
+# Combine multiple options
+python -m yalla -c -m -d    # CPU, memory, disk info
+python -m yalla -i -p        # Private and public IP
+```
+
+## ⚙️ Configuration
+
+Edit `yalla/config.py` to customize:
+
+- **Refresh interval** (default: 1.5 seconds)
+- **Color themes** (dark violet, red, blue)
+- **Display preferences** (which metrics to show)
+- **Threshold values** (warning/critical levels)
+
+## 📋 Requirements
+
+### Minimum
+
+- Python 3.7+
+- 100 MB free RAM
+- 50 MB disk space
+
+### Permissions
+
+- System monitoring access
+- May require `sudo`/Administrator on some systems
+
+## ✅ Platform Support
 
 | Platform | Version | Architecture | Status |
 |----------|---------|--------------|---------|
@@ -224,172 +202,54 @@ Yalla is fully cross-platform and tested on:
 | **macOS** | 10.12+ | x86_64, ARM64 | ✅ Full Support |
 | **Linux** | Kernel 3.2+ | x86_64, ARM64 | ✅ Full Support |
 
-### 🔧 System Requirements
-
-- **RAM**: 100 MB free
-- **Disk**: 50 MB free space
-- **Python**: 3.7+ (for source installation)
-- **Permissions**: System monitoring access (may require admin/sudo)
-
-### 🚨 Security Considerations
-
-- Yalla requires system monitoring permissions
-- On some systems, you may need to run as administrator or grant specific permissions
-- No data is transmitted - all monitoring is local
-
-### 🛠️ Troubleshooting
-
-**Permission Issues**:
-- Windows: Run as Administrator
-- macOS: Grant "System Events" permission in Security & Privacy
-- Linux: Use `sudo` or configure polkit
-
-**Display Issues**:
-- Ensure terminal supports UTF-8 encoding
-- Use a monospace font for best results
-
-## Project Structure
+## 📁 Project Structure
 
 ```
-Yalla/
-├── index.py                 # Main entry point
-├── _version.py              # Version information
-├── config.py                # Configuration settings
-├── requirements.txt         # Python dependencies
-├── build.py                 # Cross-platform build script
-├── release.py               # Release automation helper
-├── create_usb_package.py    # USB distribution creator
-├── yalla.spec              # PyInstaller configuration
-├── CHANGELOG.md            # Release notes and history
-├── README.md               # This documentation
-├── .gitignore              # Git ignore rules
-├── .github/
-│   └── workflows/
-│       └── build.yml       # CI/CD for automated builds
-└── modules/
-    ├── __init__.py
-    ├── system_monitor.py   # Cross-platform system metrics
-    ├── network_monitor.py  # Network statistics & interfaces
-    ├── ui_renderer.py      # Terminal UI with ASCII art
-    └── info_display.py     # Command-line info functions
+yalla/
+├── yalla/
+│   ├── __init__.py
+│   ├── __main__.py
+│   ├── index.py              # Main entry point
+│   ├── config.py             # Configuration
+│   ├── _version.py           # Version info
+│   └── modules/
+│       ├── system_monitor.py # CPU, memory, disk metrics
+│       ├── network_monitor.py # Network interfaces & connections
+│       ├── ui_renderer.py     # Terminal UI & ASCII art
+│       └── info_display.py    # CLI display functions
+├── tests/                    # Test suite
+├── build.py                  # Build executables
+├── setup.py                  # Package setup
+├── pyproject.toml            # Project metadata
+├── requirements.txt          # Dependencies
+└── README.md                 # This file
 ```
 
-## Dependencies
+## 🔧 Building Executables
 
-### Runtime Dependencies
-- **psutil** - Cross-platform system and process utilities
-- **colorama** - Cross-platform colored terminal text
+To create standalone executables for distribution:
 
-### Build Dependencies (Optional)
-- **pyinstaller** - Creates standalone executables
-- **setuptools** - Python package management
-- **wheel** - Python package distribution
-
-## USB Distribution
-
-Yalla includes a complete USB-ready distribution system:
-
-### USB Package Structure
-```
-Yalla-USB/
-├── executables/
-│   ├── windows/yalla.exe     # Windows executable
-│   ├── macos/yalla          # macOS executable
-│   └── linux/yalla          # Linux executable
-├── scripts/
-│   ├── run_yalla_windows.bat # Windows launcher
-│   ├── run_yalla_unix.sh     # Unix launcher
-│   └── run_yalla_python.py   # Universal Python launcher
-├── docs/
-│   ├── platform_requirements.md
-│   └── troubleshooting.md
-└── README.md                 # USB usage instructions
-```
-
-### Key Features
-- **Zero Installation**: Runs directly from USB on any supported platform
-- **Platform Detection**: Automatically selects the correct executable
-- **Fallback Support**: Includes Python launcher for systems without pre-built binaries
-- **Comprehensive Docs**: Platform requirements and troubleshooting guides
-- **Launcher Scripts**: One-click execution with automatic platform detection
-
-### Distribution Benefits
-- **Portable Security Toolkit**: Carry your monitoring tools anywhere
-- **Air-Gapped Systems**: Works on isolated networks without internet access
-- **Multi-Platform Coverage**: Single USB works across Windows, macOS, and Linux
-- **Version Consistency**: All platforms run the same version simultaneously
-
-## Releases & Distribution
-
-### Automated Releases
-
-Yalla uses GitHub Actions for automated cross-platform builds and releases:
-
-- **Trigger**: Push a version tag (e.g., `v1.1.0`)
-- **Builds**: Automatic compilation for Windows, macOS, and Linux
-- **Assets**: All executables and USB packages uploaded automatically
-- **Release Notes**: Auto-generated from commit messages
-
-### Creating a Release
-
-#### Option 1: Automated (Recommended)
 ```bash
-# Use the release helper script
-python release.py 1.1.0
+# Install build dependencies
+pip install pyinstaller
 
-# This will:
-# - Update version numbers
-# - Update changelog
-# - Create git commit and tag
-# - Trigger GitHub Actions release
+# Build for your current platform
+python build.py
+
+# Build for specific platform
+python build.py linux
+python build.py windows
+python build.py darwin
 ```
 
-#### Option 2: Manual Process
-```bash
-# Update version
-echo '__version__ = "1.1.0"' > _version.py
+## 📝 License
 
-# Update CHANGELOG.md (move unreleased items to new version)
+MIT License - feel free to use for your resume, portfolio, or personal projects.
 
-# Commit and tag
-git add .
-git commit -m "Release v1.1.0"
-git tag -a v1.1.0 -m "Release v1.1.0"
-git push origin main --tags
-```
+## 👤 Author
 
-### Release Assets
-
-Each release includes:
-- `yalla-linux-x86_64.tar.gz` - Linux executable (~15MB)
-- `yalla-windows-x86_64.zip` - Windows executable (~20MB)
-- `yalla-darwin-x86_64.tar.gz` - macOS executable (~15MB)
-- `yalla-usb-package.zip` - Complete USB distribution (~50MB)
-
-## Future Enhancements
-
-- Port scanner integration
-- Vulnerability scanner
-- Log file monitoring
-- Alert system for anomalies
-- Export functionality (JSON/CSV)
-- Customizable widgets
-- Plugin system for third-party modules
-- Web-based dashboard option
-- Docker container support
-
-## Contributing
-
-Contributions are welcome! Feel free to open issues or submit pull requests.
-
-## License
-
-MIT License - feel free to use this project for your resume, portfolio, or personal use.
-
-## Author
-
-Built with ❤️ for the cybersecurity community
+**Adam Nasher** - Built with ❤️ for the cybersecurity community
 
 ---
 
-**Note**: This tool is for educational and monitoring purposes. Always ensure you have proper authorization before monitoring systems or networks.
+**Disclaimer**: This tool is for educational and authorized monitoring purposes only. Always ensure you have proper authorization before monitoring systems or networks.
