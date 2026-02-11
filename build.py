@@ -68,7 +68,11 @@ def build_executable(target_os=None, clean=True):
     if "--windowed" in cmd:
         cmd.remove("--windowed")
 
-    cmd.append("index.py")
+    # Use the yalla package entry point
+    cmd.extend([
+        "--paths=.",
+        "yalla/__main__.py"
+    ])
 
     print(f"Running: {' '.join(cmd)}")
     success, output = run_command(" ".join(cmd))
