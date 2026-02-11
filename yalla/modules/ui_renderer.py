@@ -33,18 +33,18 @@ def get_ascii_banner():
     width = get_terminal_size()[0] - 4
     width = max(width, 64)  # Minimum width for the banner
 
-    # Create a clean YALLA banner - all lines exactly 55 characters
+    # Create a clean YALLA banner - all lines exactly 56 characters
     banner_lines = [
-        f"{Colors.DARK_VIOLET}  ██╗   ██╗  █████╗  ██╗     ██╗      █████╗  {Colors.RESET}",  # 55 chars total
-        f"{Colors.DARK_VIOLET}  ╚██╗ ██╔╝ ██╔══██╗ ██║     ██║     ██╔══██╗ {Colors.RESET}",  # 55 chars total
-        f"{Colors.DARK_VIOLET}   ╚████╔╝  ███████║ ██║     ██║     ███████║ {Colors.RESET}",  # 55 chars total
-        f"{Colors.DARK_VIOLET}    ╚██╔╝   ██╔══██║ ██║     ██║     ██╔══██║ {Colors.RESET}",  # 55 chars total
-        f"{Colors.DARK_VIOLET}     ██║    ██║  ██║ ███████╗ ███████╗ ██║  ██║ {Colors.RESET}", # 55 chars total
-        f"{Colors.DARK_VIOLET}     ╚═╝    ╚═╝  ╚═╝ ╚══════╝ ╚══════╝ ╚═╝  ╚═╝ {Colors.RESET}", # 55 chars total
+        f"{Colors.DARK_VIOLET}  ██╗   ██╗  █████╗  ██╗      ██╗       █████╗   {Colors.RESET}",  # 56 chars total
+        f"{Colors.DARK_VIOLET}  ╚██╗ ██╔╝ ██╔══██╗ ██║      ██║      ██╔══██╗  {Colors.RESET}",  # 56 chars total
+        f"{Colors.DARK_VIOLET}   ╚████╔╝  ███████║ ██║      ██║      ███████║  {Colors.RESET}",  # 56 chars total
+        f"{Colors.DARK_VIOLET}    ╚██╔╝   ██╔══██║ ██║      ██║      ██╔══██║  {Colors.RESET}",  # 56 chars total
+        f"{Colors.DARK_VIOLET}     ██║    ██║  ██║ ███████╗ ███████╗ ██║  ██║ {Colors.RESET}", # 56 chars total
+        f"{Colors.DARK_VIOLET}     ╚═╝    ╚═╝  ╚═╝ ╚══════╝ ╚══════╝ ╚═╝  ╚═╝ {Colors.RESET}", # 56 chars total
     ]
 
-    # Center each line - all lines are now exactly 55 characters total
-    ascii_width = 55
+    # Center each line - all lines are now exactly 56 characters total
+    ascii_width = 56
     centered_banner = []
     for line in banner_lines:
         padding = max(0, (width - ascii_width) // 2)
