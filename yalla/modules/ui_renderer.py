@@ -37,10 +37,10 @@ def get_ascii_banner():
     banner_lines = [
         f"{Colors.DARK_VIOLET}  ██╗   ██╗  █████╗  ██╗     ██╗      █████╗  {Colors.RESET}",  # 55 chars total
         f"{Colors.DARK_VIOLET}  ╚██╗ ██╔╝ ██╔══██╗ ██║     ██║     ██╔══██╗ {Colors.RESET}",  # 55 chars total
-        f"{Colors.DARK_VIOLET}   ╚████╔╝  ███████║ ██║     ██║     ███████║{Colors.RESET}",   # 55 chars total
+        f"{Colors.DARK_VIOLET}   ╚████╔╝  ███████║ ██║     ██║     ███████║ {Colors.RESET}",  # 55 chars total
         f"{Colors.DARK_VIOLET}    ╚██╔╝   ██╔══██║ ██║     ██║     ██╔══██║ {Colors.RESET}",  # 55 chars total
-        f"{Colors.DARK_VIOLET}     ██║    ██║  ██║ ███████╗ ███████╗ ██║  ██║{Colors.RESET}", # 55 chars total
-        f"{Colors.DARK_VIOLET}     ╚═╝    ╚═╝  ╚═╝ ╚══════╝ ╚══════╝ ╚═╝  ╚═╝{Colors.RESET}", # 55 chars total
+        f"{Colors.DARK_VIOLET}     ██║    ██║  ██║ ███████╗ ███████╗ ██║  ██║ {Colors.RESET}", # 55 chars total
+        f"{Colors.DARK_VIOLET}     ╚═╝    ╚═╝  ╚═╝ ╚══════╝ ╚══════╝ ╚═╝  ╚═╝ {Colors.RESET}", # 55 chars total
     ]
 
     # Center each line - all lines are now exactly 55 characters total
