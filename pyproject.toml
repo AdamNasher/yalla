@@ -8,7 +8,7 @@ version = "1.0.0"
 description = "Interactive Security Dashboard - Red Team Edition"
 readme = "README.md"
 license = { text = "MIT" }
-authors = [ { name = "Your Name" } ]
+authors = [ { name = "Adam Nasher" } ]
 requires-python = ">=3.7"
 dependencies = [
     "psutil",

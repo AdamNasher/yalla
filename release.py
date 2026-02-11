@@ -132,7 +132,7 @@ def main():
     if create_git_tag(new_version):
         print("\n🎉 Release created successfully!")
         print(f"GitHub Actions will now build and create the release automatically.")
-        print(f"Check: https://github.com/yourusername/yalla/releases")
+        print(f"Check: https://github.com/AdamNasher/yalla/releases")
     else:
         print("\n❌ Release process completed but tag creation failed.")
         print("You may need to create the tag manually.")

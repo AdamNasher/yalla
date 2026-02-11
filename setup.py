@@ -24,7 +24,7 @@ with open("requirements.txt", "r", encoding="utf-8") as fh:
 setup(
     name="yalla",
     version=__version__,
-    author="Your Name",
+    author="Adam Nasher",
     description="Interactive Security Dashboard - Red Team Edition",
     long_description=long_description,
     long_description_content_type="text/markdown",

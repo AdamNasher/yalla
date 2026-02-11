@@ -165,3 +165,12 @@ Yalla-USB/
 yalla-usb-package.zip
 # Backup folder for refactor
 legacy_backup/
+
+# Cursor IDE
+.cursor/
+
+# Personal notes and planning documents
+my-notes.txt
+._my-notes.txt
+*.plan.md
+yalla-plan.pdf

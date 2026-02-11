@@ -6,8 +6,8 @@ A terminal-based security dashboard with real-time system monitoring, network an
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Platforms](https://img.shields.io/badge/platforms-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)
 ![USB Ready](https://img.shields.io/badge/USB-Ready-orange.svg)
-[![Release](https://img.shields.io/github/v/release/yourusername/yalla)](https://github.com/yourusername/yalla/releases)
-[![Build](https://img.shields.io/github/actions/workflow/status/yourusername/yalla/build.yml)](https://github.com/yourusername/yalla/actions)
+[![Release](https://img.shields.io/github/v/release/AdamNasher/yalla)](https://github.com/AdamNasher/yalla/releases)
+[![Build](https://img.shields.io/github/actions/workflow/status/AdamNasher/yalla/build.yml)](https://github.com/AdamNasher/yalla/actions)
 
 ## Features
 
@@ -48,7 +48,7 @@ A terminal-based security dashboard with real-time system monitoring, network an
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/yalla.git
+git clone https://github.com/AdamNasher/yalla.git
 cd yalla
 ```
 
@@ -84,7 +84,7 @@ pip install -r requirements.txt
 
 For maximum portability, use the pre-built executables that run directly from USB drives:
 
-1. **Download the USB package** from [Releases](https://github.com/yourusername/yalla/releases)
+1. **Download the USB package** from [Releases](https://github.com/AdamNasher/yalla/releases)
 
 2. **Extract to USB drive** - the entire `Yalla-USB` folder can be copied to any USB drive
 
@@ -102,7 +102,7 @@ For maximum portability, use the pre-built executables that run directly from US
 
 ### Platform-Specific Executables
 
-Download pre-built executables for your platform from [Releases](https://github.com/yourusername/yalla/releases):
+Download pre-built executables for your platform from [Releases](https://github.com/AdamNasher/yalla/releases):
 
 - **Windows**: `yalla-windows-x86_64.zip` - Extract and run `yalla.exe`
 - **macOS**: `yalla-darwin-x86_64.tar.gz` - Extract and run `yalla`
